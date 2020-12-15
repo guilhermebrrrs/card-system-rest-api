@@ -17,6 +17,14 @@ const restaurantSchema = new Schema(
 				type: String,
 				required: true,
 			},
+			city: {
+				type: String,
+				required: true,
+			},
+			state: {
+				type: String,
+				required: true,
+			},
 		},
 	},
 	{ collection: 'Restaurants', timestamps: true }
@@ -26,11 +34,13 @@ export const RestaurantModel = mongoose.model('Restaurant', restaurantSchema)
 
 export interface IRestaurant {
 	_id?: string
-	tid?: string
-	name?: string
+	tid: string
+	name: string
 	address: {
-		address?: string
-		number?: string
-		district?: string
+		address: string
+		number: string
+		district: string
+		city: string
+		state: string
 	}
 }
