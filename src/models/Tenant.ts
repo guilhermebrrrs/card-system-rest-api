@@ -1,4 +1,4 @@
-import mongoose, { Schema, Types } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 const tenantSchema = new Schema(
 	{ name: { type: String, required: true } },
@@ -7,7 +7,7 @@ const tenantSchema = new Schema(
 
 export const TenantModel = mongoose.model('Tenant', tenantSchema)
 
-export interface Tenant {
+export interface ITenant {
 	_id?: string
 	name?: string
 }

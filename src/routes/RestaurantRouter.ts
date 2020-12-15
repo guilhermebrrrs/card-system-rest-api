@@ -1,23 +1,23 @@
 import express, { Request, Response } from 'express'
-import { TenantController } from '../controllers'
-import { ITenant } from '../models'
+import { RestaurantController } from '../controllers'
+import { IRestaurant } from '../models'
 
 const routes = express.Router()
 
-routes.post('/tenants', async (req: Request, res: Response) => {
-	const obj: ITenant = req.body
-	await TenantController.create(obj)
+routes.post('/restaurants', async (req: Request, res: Response) => {
+	const obj: IRestaurant = req.body
+	await RestaurantController.create(obj)
 		.then(() => {
-			return res.status(201).json('Created-OK')
+			res.status(201).json('Created-OK')
 		})
 		.catch((err) => {
 			console.error(err)
-			return res.status(500).json('Internal Server Error')
+			res.status(200).json('Internal Server Error')
 		})
 })
 
-routes.get('/tenants', async (req: Request, res: Response) => {
-	await TenantController.findAll()
+routes.get('/restaurants', async (req: Request, res: Response) => {
+	await RestaurantController.findAll()
 		.then((data) => {
 			res.status(200).json(data)
 		})
@@ -27,9 +27,9 @@ routes.get('/tenants', async (req: Request, res: Response) => {
 		})
 })
 
-routes.get('/tenants/:_id', async (req: Request, res: Response) => {
+routes.get('/restaurants/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	await TenantController.findById(_id)
+	await RestaurantController.findById(_id)
 		.then((data) => {
 			res.status(200).json(data)
 		})
@@ -39,10 +39,10 @@ routes.get('/tenants/:_id', async (req: Request, res: Response) => {
 		})
 })
 
-routes.put('/tenants/:_id', async (req: Request, res: Response) => {
+routes.put('/restaurants/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	const obj: ITenant = req.body
-	await TenantController.update(_id, obj)
+	const obj: IRestaurant = req.body
+	await RestaurantController.update(_id, obj)
 		.then((data) => {
 			res.status(200).json(data)
 		})
@@ -52,9 +52,9 @@ routes.put('/tenants/:_id', async (req: Request, res: Response) => {
 		})
 })
 
-routes.delete('/tenants/:_id', async (req: Request, res: Response) => {
+routes.delete('/restaurants/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	await TenantController.delete(_id)
+	await RestaurantController.delete(_id)
 		.then((data) => {
 			res.status(200).json(data)
 		})

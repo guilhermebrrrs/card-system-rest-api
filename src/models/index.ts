@@ -1,1 +1,2 @@
-export { Tenant, TenantModel } from './Tenant'
+export { IRestaurant, RestaurantModel } from './Restaurant'
+export { ITenant, TenantModel } from './Tenant'

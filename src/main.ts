@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 
-import { TenantRouter } from './routes'
+import { RestaurantRouter, TenantRouter } from './routes'
 
 const app = express()
 const PORT = 3333
@@ -20,7 +20,7 @@ async function bootstrap() {
 
 	await app
 		.use(express.json())
-		.use('/api', [TenantRouter])
+		.use('/api', [RestaurantRouter, TenantRouter])
 		.listen(PORT, () => console.log(`Application is running at PORT ${PORT}`))
 }
 
