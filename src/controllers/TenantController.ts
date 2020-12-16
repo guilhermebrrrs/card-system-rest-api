@@ -1,8 +1,8 @@
 import { ITenant, TenantModel } from '../models'
 
 export class TenantController {
-	static async create(tenant: ITenant) {
-		return await TenantModel.create(tenant)
+	static async create(obj: ITenant) {
+		return await TenantModel.create(obj)
 	}
 
 	static async findAll() {
@@ -13,8 +13,8 @@ export class TenantController {
 		return await TenantModel.findById(_id)
 	}
 
-	static async update(_id: string, tenant: ITenant) {
-		return await TenantModel.findByIdAndUpdate(_id, tenant).then((data) => {
+	static async update(_id: string, obj: ITenant) {
+		return await TenantModel.findByIdAndUpdate(_id, obj).then((data) => {
 			return data?._id
 		})
 	}
