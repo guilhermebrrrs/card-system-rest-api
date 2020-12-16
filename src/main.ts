@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
-import { RestaurantRouter, TenantRouter } from './routes'
+import { EmployeeRouter, RestaurantRouter, TenantRouter } from './routes'
 
 dotenv.config()
 
@@ -26,7 +26,7 @@ async function bootstrap() {
 
 	await app
 		.use(express.json())
-		.use('/api', [RestaurantRouter, TenantRouter])
+		.use('/api', [EmployeeRouter, RestaurantRouter, TenantRouter])
 		.listen(PORT, () => console.log(`Application is running at PORT ${PORT}`))
 }
 

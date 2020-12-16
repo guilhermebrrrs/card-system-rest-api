@@ -1,14 +1,14 @@
 import express, { Request, Response } from 'express'
-import { TenantController } from '../controllers'
-import { ITenant } from '../models'
+import { EmployeeController } from '../controllers'
+import { IEmployee } from '../models'
 
 const routes = express.Router()
 
-routes.post('/tenants', async (req: Request, res: Response) => {
-	const obj: ITenant = req.body
-	await TenantController.create(obj)
-		.then(() => {
-			res.status(201).json('Created-OK')
+routes.post('/employees', async (req: Request, res: Response) => {
+	const obj: IEmployee = req.body
+	await EmployeeController.create(obj)
+		.then((data) => {
+			res.status(201).json(data)
 		})
 		.catch((err) => {
 			console.error(err)
@@ -16,8 +16,8 @@ routes.post('/tenants', async (req: Request, res: Response) => {
 		})
 })
 
-routes.get('/tenants', async (req: Request, res: Response) => {
-	await TenantController.findAll()
+routes.get('/employees', async (req: Request, res: Response) => {
+	await EmployeeController.findAll()
 		.then((data) => {
 			res.status(200).json(data)
 		})
@@ -27,9 +27,9 @@ routes.get('/tenants', async (req: Request, res: Response) => {
 		})
 })
 
-routes.get('/tenants/:_id', async (req: Request, res: Response) => {
+routes.get('/employees/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	await TenantController.findById(_id)
+	await EmployeeController.findById(_id)
 		.then((data) => {
 			res.status(200).json(data)
 		})
@@ -39,10 +39,10 @@ routes.get('/tenants/:_id', async (req: Request, res: Response) => {
 		})
 })
 
-routes.put('/tenants/:_id', async (req: Request, res: Response) => {
+routes.put('/employees/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	const obj: ITenant = req.body
-	await TenantController.update(_id, obj)
+	const obj: IEmployee = req.body
+	await EmployeeController.update(_id, obj)
 		.then((data) => {
 			res.status(200).json(data)
 		})
@@ -52,9 +52,9 @@ routes.put('/tenants/:_id', async (req: Request, res: Response) => {
 		})
 })
 
-routes.delete('/tenants/:_id', async (req: Request, res: Response) => {
+routes.delete('/employees/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	await TenantController.delete(_id)
+	await EmployeeController.delete(_id)
 		.then((data) => {
 			res.status(200).json(data)
 		})
