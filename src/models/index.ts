@@ -1,4 +1,8 @@
+export { ICard, CardModel } from './Card'
+export { ICategory, CategoryModel } from './Category'
 export { IEmployee, EmployeeModel } from './Employee'
+export { IItem, ItemModel } from './Item'
+export { IProduct, ProductModel } from './Product'
 export { IRestaurant, RestaurantModel } from './Restaurant'
 export { ITable, TableModel } from './Table'
 export { ITenant, TenantModel } from './Tenant'
