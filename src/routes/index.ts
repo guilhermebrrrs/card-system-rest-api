@@ -1,3 +1,4 @@
+export { default as CategoryRouter } from './CategoryRouter'
 export { default as EmployeeRouter } from './EmployeeRouter'
 export { default as RestaurantRouter } from './RestaurantRouter'
 export { default as TableRouter } from './TableRouter'

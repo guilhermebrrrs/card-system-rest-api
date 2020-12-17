@@ -1,3 +1,4 @@
+export { CategoryController } from './CategoryController'
 export { EmployeeController } from './EmployeeController'
 export { RestaurantController } from './RestaurantController'
 export { TableController } from './TableController'

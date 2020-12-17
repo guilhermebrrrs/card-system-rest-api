@@ -7,8 +7,8 @@ const routes = express.Router()
 routes.post('/employees', async (req: Request, res: Response) => {
 	const obj: IEmployee = req.body
 	await EmployeeController.create(obj)
-		.then((data) => {
-			res.status(201).json(data)
+		.then(() => {
+			res.status(201).json('Created-OK')
 		})
 		.catch((err) => {
 			console.error(err)

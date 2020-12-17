@@ -9,6 +9,7 @@ const cardSchema = new Schema(
 		consumer_name: { type: String, required: true },
 		item: { type: [ItemModel], required: true },
 		total: { type: Number, required: true },
+		closed: { type: Boolean, default: false },
 	},
 	{ collection: 'Cards', timestamps: true }
 )
@@ -23,4 +24,5 @@ export interface ICard {
 	consumer_name: string
 	item: Array<IItem>
 	total: number
+	closed: boolean
 }
