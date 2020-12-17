@@ -20,6 +20,8 @@ export class CategoryController {
 	}
 
 	static async delete(_id: string) {
-		return await CategoryModel.findByIdAndDelete(_id)
+		return await CategoryModel.findByIdAndDelete(_id).then((data) => {
+			return data?._id
+		})
 	}
 }

@@ -20,6 +20,8 @@ export class TenantController {
 	}
 
 	static async delete(_id: string) {
-		return await TenantModel.findByIdAndDelete(_id)
+		return await TenantModel.findByIdAndDelete(_id).then((data) => {
+			return data?._id
+		})
 	}
 }

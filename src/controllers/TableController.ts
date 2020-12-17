@@ -20,6 +20,8 @@ export class TableController {
 	}
 
 	static async delete(_id: string) {
-		return await TableModel.findByIdAndDelete(_id)
+		return await TableModel.findByIdAndDelete(_id).then((data) => {
+			return data?._id
+		})
 	}
 }

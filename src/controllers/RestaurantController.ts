@@ -20,6 +20,8 @@ export class RestaurantController {
 	}
 
 	static async delete(_id: string) {
-		return await RestaurantModel.findByIdAndDelete(_id)
+		return await RestaurantModel.findByIdAndDelete(_id).then((data) => {
+			return data?._id
+		})
 	}
 }
