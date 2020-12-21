@@ -1,11 +1,11 @@
 import express, { Request, Response } from 'express'
 import { TenantController } from '../controllers'
-import { ITenant } from '../models'
+import { Tenant } from '../models'
 
 const routes = express.Router()
 
 routes.post('/tenants', async (req: Request, res: Response) => {
-	const obj: ITenant = req.body
+	const obj: Tenant = req.body
 	await TenantController.create(obj)
 		.then(() => {
 			res.status(201).json('Created-OK')
@@ -41,7 +41,7 @@ routes.get('/tenants/:_id', async (req: Request, res: Response) => {
 
 routes.put('/tenants/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	const obj: ITenant = req.body
+	const obj: Tenant = req.body
 	await TenantController.update(_id, obj)
 		.then((data) => {
 			res.status(200).json(data)

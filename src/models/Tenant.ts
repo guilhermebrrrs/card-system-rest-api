@@ -5,9 +5,9 @@ const tenantSchema = new Schema(
 	{ collection: 'Tenants', timestamps: true }
 )
 
-export const TenantModel = mongoose.model('Tenant', tenantSchema)
+export const TenantDBModel = mongoose.model('Tenant', tenantSchema)
 
-export interface ITenant {
+export interface Tenant {
 	_id?: string
 	name?: string
 }

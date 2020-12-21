@@ -1,11 +1,11 @@
 import express, { Request, Response } from 'express'
 import { EmployeeController } from '../controllers'
-import { IEmployee } from '../models'
+import { Employee } from '../models'
 
 const routes = express.Router()
 
 routes.post('/employees', async (req: Request, res: Response) => {
-	const obj: IEmployee = req.body
+	const obj: Employee = req.body
 	await EmployeeController.create(obj)
 		.then(() => {
 			res.status(201).json('Created-OK')
@@ -41,7 +41,7 @@ routes.get('/employees/:_id', async (req: Request, res: Response) => {
 
 routes.put('/employees/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	const obj: IEmployee = req.body
+	const obj: Employee = req.body
 	await EmployeeController.update(_id, obj)
 		.then((data) => {
 			res.status(200).json(data)

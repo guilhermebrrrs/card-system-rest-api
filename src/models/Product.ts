@@ -2,22 +2,22 @@ import mongoose, { Schema } from 'mongoose'
 
 const productSchema = new Schema(
 	{
-		tid: { type: String, required: true },
-		rid: { type: String, required: true },
-		cid: { type: String, required: true },
+		tenant_id: { type: String, required: true },
+		restaurant_id: { type: String, required: true },
+		category_id: { type: String, required: true },
 		name: { type: String, required: true },
 		price: { type: Number, required: true },
 	},
 	{ collection: 'Products', timestamps: true }
 )
 
-export const ProductModel = mongoose.model('Product', productSchema)
+export const ProductDBModel = mongoose.model('Product', productSchema)
 
-export interface IProduct {
+export interface Product {
 	_id?: string
-	tid: string
-	rid: string
-	cid: string
+	tenant_id: string
+	restaurant_id: string
+	category_id: string
 	name: string
 	price: number
 }

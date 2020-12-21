@@ -2,20 +2,20 @@ import mongoose, { Schema } from 'mongoose'
 
 const categorySchema = new Schema(
 	{
-		tid: { type: String, required: true },
-		rid: { type: String, required: true },
+		tenant_id: { type: String, required: true },
+		restaurant_id: { type: String, required: true },
 		name: { type: String, required: true },
 		description: { type: String, required: true },
 	},
 	{ collection: 'Categories', timestamps: true }
 )
 
-export const CategoryModel = mongoose.model('Category', categorySchema)
+export const CategoryDBModel = mongoose.model('Category', categorySchema)
 
-export interface ICategory {
+export interface Category {
 	_id?: string
-	tid: string
-	rid: string
+	tenant_id: string
+	restaurant_id: string
 	name: string
 	description: string
 }

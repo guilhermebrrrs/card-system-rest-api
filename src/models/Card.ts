@@ -1,28 +1,28 @@
 import mongoose, { Schema } from 'mongoose'
-import { IItem, ItemModel } from './'
+import { Item, ItemDBModel } from './'
 
 const cardSchema = new Schema(
 	{
-		tid: { type: String, required: true },
-		rid: { type: String, required: true },
+		tenant_id: { type: String, required: true },
+		restaurant_id: { type: String, required: true },
 		table_number: { type: Number, required: true },
 		consumer_name: { type: String, required: true },
-		item: { type: [ItemModel], required: true },
+		items: { type: [ItemDBModel], required: true },
 		total: { type: Number, required: true },
 		closed: { type: Boolean, default: false },
 	},
 	{ collection: 'Cards', timestamps: true }
 )
 
-export const CardModel = mongoose.model('Card', cardSchema)
+export const CardDBModel = mongoose.model('Card', cardSchema)
 
-export interface ICard {
+export interface Card {
 	_id?: string
-	tid: string
-	rid: string
+	tenant_id: string
+	restaurant_id: string
 	table_number: number
 	consumer_name: string
-	item: Array<IItem>
+	items: Array<Item>
 	total: number
 	closed: boolean
 }

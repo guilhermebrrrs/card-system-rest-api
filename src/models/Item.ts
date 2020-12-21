@@ -1,24 +1,24 @@
 import mongoose, { Schema } from 'mongoose'
-import { IProduct, ProductModel } from './'
+import { Product, ProductDBModel } from './'
 
 const itemSchema = new Schema(
 	{
-		tid: { type: String, required: true },
-		rid: { type: String, required: true },
-		item: { type: ProductModel, required: true },
+		tenant_id: { type: String, required: true },
+		restaurant_id: { type: String, required: true },
+		item: { type: ProductDBModel, required: true },
 		added_by: { type: String, required: true },
-		amount: { type: Number, required: true },
+		item_amount: { type: Number, required: true },
 	},
 	{ collection: 'Items', timestamps: true }
 )
 
-export const ItemModel = mongoose.model('Item', itemSchema)
+export const ItemDBModel = mongoose.model('Item', itemSchema)
 
-export interface IItem {
+export interface Item {
 	_id?: string
-	tid: string
-	rid: string
-	item: IProduct
+	tenant_id: string
+	restaurant_id: string
+	item: Product
 	added_by: string
-	amount: number
+	item_amount: number
 }

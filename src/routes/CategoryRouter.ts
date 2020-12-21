@@ -1,11 +1,11 @@
 import express, { Request, Response } from 'express'
 import { CategoryController } from '../controllers'
-import { ICategory } from '../models'
+import { Category } from '../models'
 
 const routes = express.Router()
 
 routes.post('/categories', async (req: Request, res: Response) => {
-	const obj: ICategory = req.body
+	const obj: Category = req.body
 	await CategoryController.create(obj)
 		.then(() => {
 			res.status(201).json('Created-OK')
@@ -41,7 +41,7 @@ routes.get('/categories/:_id', async (req: Request, res: Response) => {
 
 routes.put('/categories/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
-	const obj: ICategory = req.body
+	const obj: Category = req.body
 	await CategoryController.update(_id, obj)
 		.then((data) => {
 			res.status(200).json(data)

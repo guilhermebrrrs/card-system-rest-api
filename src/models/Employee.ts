@@ -2,8 +2,8 @@ import mongoose, { Schema } from 'mongoose'
 
 const employeeSchema = new Schema(
 	{
-		tid: { type: String, required: true },
-		rid: { type: String, required: true },
+		tenant_id: { type: String, required: true },
+		restaurant_id: { type: String, required: true },
 		name: { type: String, required: true },
 		login: { type: String, required: true },
 		password: { type: String, required: true },
@@ -11,12 +11,12 @@ const employeeSchema = new Schema(
 	{ collection: 'Employees', timestamps: true }
 )
 
-export const EmployeeModel = mongoose.model('Employee', employeeSchema)
+export const EmployeeDBModel = mongoose.model('Employee', employeeSchema)
 
-export interface IEmployee {
+export interface Employee {
 	_id?: string
-	tid: string
-	rid: string
+	tenant_id: string
+	restaurant_id: string
 	name: string
 	login: string
 	password: string
