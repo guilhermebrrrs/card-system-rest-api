@@ -1,6 +1,7 @@
 export { CardController } from './CardController'
 export { CategoryController } from './CategoryController'
 export { EmployeeController } from './EmployeeController'
+export { ItemController } from './ItemController'
 export { RestaurantController } from './RestaurantController'
 export { TableController } from './TableController'
 export { TenantController } from './TenantController'

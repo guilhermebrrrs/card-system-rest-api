@@ -1,6 +1,7 @@
 export { CardRouter } from './CardRouter'
 export { CategoryRouter } from './CategoryRouter'
 export { EmployeeRouter } from './EmployeeRouter'
+export { ItemRouter } from './ItemRouter'
 export { RestaurantRouter } from './RestaurantRouter'
 export { TableRouter } from './TableRouter'
 export { TenantRouter } from './TenantRouter'
