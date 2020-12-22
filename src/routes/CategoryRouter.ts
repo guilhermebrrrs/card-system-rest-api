@@ -2,9 +2,9 @@ import express, { Request, Response } from 'express'
 import { CategoryController } from '../controllers'
 import { Category } from '../models'
 
-const routes = express.Router()
+const CategoryRouter = express.Router()
 
-routes.post('/categories', async (req: Request, res: Response) => {
+CategoryRouter.post('/categories', async (req: Request, res: Response) => {
 	const obj: Category = req.body
 	await CategoryController.create(obj)
 		.then(() => {
@@ -16,7 +16,7 @@ routes.post('/categories', async (req: Request, res: Response) => {
 		})
 })
 
-routes.get('/categories', async (req: Request, res: Response) => {
+CategoryRouter.get('/categories', async (req: Request, res: Response) => {
 	await CategoryController.findAll()
 		.then((data) => {
 			res.status(200).json(data)
@@ -27,7 +27,7 @@ routes.get('/categories', async (req: Request, res: Response) => {
 		})
 })
 
-routes.get('/categories/:_id', async (req: Request, res: Response) => {
+CategoryRouter.get('/categories/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
 	await CategoryController.findById(_id)
 		.then((data) => {
@@ -39,7 +39,7 @@ routes.get('/categories/:_id', async (req: Request, res: Response) => {
 		})
 })
 
-routes.put('/categories/:_id', async (req: Request, res: Response) => {
+CategoryRouter.put('/categories/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
 	const obj: Category = req.body
 	await CategoryController.update(_id, obj)
@@ -52,16 +52,19 @@ routes.put('/categories/:_id', async (req: Request, res: Response) => {
 		})
 })
 
-routes.delete('/categories/:_id', async (req: Request, res: Response) => {
-	const _id: string = req.params._id
-	await CategoryController.delete(_id)
-		.then((data) => {
-			res.status(200).json(data)
-		})
-		.catch((err) => {
-			console.error(err)
-			res.status(500).json('Internal Server Error')
-		})
-})
+CategoryRouter.delete(
+	'/categories/:_id',
+	async (req: Request, res: Response) => {
+		const _id: string = req.params._id
+		await CategoryController.delete(_id)
+			.then((data) => {
+				res.status(200).json(data)
+			})
+			.catch((err) => {
+				console.error(err)
+				res.status(500).json('Internal Server Error')
+			})
+	}
+)
 
-export default routes
+export { CategoryRouter }

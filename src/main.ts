@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 import {
+	CardRouter,
 	CategoryRouter,
 	EmployeeRouter,
 	RestaurantRouter,
@@ -34,6 +35,7 @@ async function bootstrap() {
 	await app
 		.use(express.json())
 		.use('/api', [
+			CardRouter,
 			CategoryRouter,
 			EmployeeRouter,
 			RestaurantRouter,
