@@ -1,7 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-
 import {
 	CardRouter,
 	CategoryRouter,
@@ -16,7 +15,6 @@ import {
 dotenv.config()
 
 const app = express()
-
 const PORT = process.env.PORT
 const database = process.env.MONGODB_DATABASENAME
 const userName = process.env.MONGODB_USER

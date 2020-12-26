@@ -1,21 +1,22 @@
 import mongoose, { Schema } from 'mongoose'
 
-const restaurantSchema = new Schema(
-	{
-		tenant_id: { type: String, required: true },
-		name: { type: String, required: true },
-		address: {
-			addr_name: { type: String, required: true },
-			number: { type: String, required: true },
-			district: { type: String, required: true },
-			city: { type: String, required: true },
-			addr_state: { type: String, required: true },
+export const RestaurantSchema = mongoose.model(
+	'Restaurant',
+	new Schema(
+		{
+			tenant_id: { type: String, required: true },
+			name: { type: String, required: true },
+			address: {
+				addr_name: { type: String, required: true },
+				number: { type: String, required: true },
+				district: { type: String, required: true },
+				city: { type: String, required: true },
+				addr_state: { type: String, required: true },
+			},
 		},
-	},
-	{ collection: 'Restaurants', timestamps: true }
+		{ collection: 'Restaurants', timestamps: true }
+	)
 )
-
-export const RestaurantDBModel = mongoose.model('Restaurant', restaurantSchema)
 
 export interface Restaurant {
 	_id?: string

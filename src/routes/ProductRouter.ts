@@ -6,6 +6,7 @@ const ProductRouter = express.Router()
 
 ProductRouter.post('/products', async (req: Request, res: Response) => {
 	const obj: Product = req.body
+
 	await ProductController.create(obj)
 		.then(() => {
 			res.status(201).json('Created-OK')
@@ -29,6 +30,7 @@ ProductRouter.get('/products', async (req: Request, res: Response) => {
 
 ProductRouter.get('/products/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
+
 	await ProductController.findById(_id)
 		.then((data) => {
 			res.status(200).json(data)
@@ -42,6 +44,7 @@ ProductRouter.get('/products/:_id', async (req: Request, res: Response) => {
 ProductRouter.put('/products/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
 	const obj: Product = req.body
+
 	await ProductController.update(_id, obj)
 		.then((data) => {
 			res.status(200).json(data)
@@ -54,6 +57,7 @@ ProductRouter.put('/products/:_id', async (req: Request, res: Response) => {
 
 ProductRouter.delete('/products/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
+
 	await ProductController.delete(_id)
 		.then((data) => {
 			res.status(200).json(data)

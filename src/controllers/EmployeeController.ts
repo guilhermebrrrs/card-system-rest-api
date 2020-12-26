@@ -1,26 +1,26 @@
-import { Employee, EmployeeDBModel } from '../models'
+import { Employee, EmployeeSchema } from '../models'
 
 export class EmployeeController {
 	static async create(obj: Employee) {
-		return await EmployeeDBModel.create(obj)
+		return await EmployeeSchema.create(obj)
 	}
 
 	static async findAll() {
-		return await EmployeeDBModel.find()
+		return await EmployeeSchema.find()
 	}
 
 	static async findById(_id: string) {
-		return await EmployeeDBModel.findById(_id)
+		return await EmployeeSchema.findById(_id)
 	}
 
 	static async update(_id: string, obj: Employee) {
-		return await EmployeeDBModel.findByIdAndUpdate(_id, obj).then((data) => {
+		return await EmployeeSchema.findByIdAndUpdate(_id, obj).then((data) => {
 			return data?._id
 		})
 	}
 
 	static async delete(_id: string) {
-		return await EmployeeDBModel.findByIdAndDelete(_id).then((data) => {
+		return await EmployeeSchema.findByIdAndDelete(_id).then((data) => {
 			return data?._id
 		})
 	}

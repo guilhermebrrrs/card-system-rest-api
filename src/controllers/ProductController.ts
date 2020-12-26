@@ -1,26 +1,26 @@
-import { Product, ProductDBModel } from '../models'
+import { Product, ProductSchema } from '../models'
 
 export class ProductController {
 	static async create(obj: Product) {
-		return await ProductDBModel.create(obj)
+		return await ProductSchema.create(obj)
 	}
 
 	static async findAll() {
-		return await ProductDBModel.find()
+		return await ProductSchema.find()
 	}
 
 	static async findById(_id: string) {
-		return await ProductDBModel.findById(_id)
+		return await ProductSchema.findById(_id)
 	}
 
 	static async update(_id: string, obj: Product) {
-		return await ProductDBModel.findByIdAndUpdate(_id, obj).then((data) => {
+		return await ProductSchema.findByIdAndUpdate(_id, obj).then((data) => {
 			return data?._id
 		})
 	}
 
 	static async delete(_id: string) {
-		return await ProductDBModel.findByIdAndDelete(_id).then((data) => {
+		return await ProductSchema.findByIdAndDelete(_id).then((data) => {
 			return data?._id
 		})
 	}

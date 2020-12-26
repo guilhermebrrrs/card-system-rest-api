@@ -6,6 +6,7 @@ const RestaurantRouter = express.Router()
 
 RestaurantRouter.post('/restaurants', async (req: Request, res: Response) => {
 	const obj: Restaurant = req.body
+
 	await RestaurantController.create(obj)
 		.then(() => {
 			res.status(201).json('Created-OK')
@@ -31,6 +32,7 @@ RestaurantRouter.get(
 	'/restaurants/:_id',
 	async (req: Request, res: Response) => {
 		const _id: string = req.params._id
+
 		await RestaurantController.findById(_id)
 			.then((data) => {
 				res.status(200).json(data)
@@ -47,6 +49,7 @@ RestaurantRouter.put(
 	async (req: Request, res: Response) => {
 		const _id: string = req.params._id
 		const obj: Restaurant = req.body
+
 		await RestaurantController.update(_id, obj)
 			.then((data) => {
 				res.status(200).json(data)
@@ -62,6 +65,7 @@ RestaurantRouter.delete(
 	'/restaurants/:_id',
 	async (req: Request, res: Response) => {
 		const _id: string = req.params._id
+
 		await RestaurantController.delete(_id)
 			.then((data) => {
 				res.status(200).json(data)

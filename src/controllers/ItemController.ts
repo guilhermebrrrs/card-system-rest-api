@@ -1,26 +1,26 @@
-import { Item, ItemDBModel } from '../models'
+import { Item, ItemSchema } from '../models'
 
 export class ItemController {
 	static async create(obj: Item) {
-		return await ItemDBModel.create(obj)
+		return await ItemSchema.create(obj)
 	}
 
 	static async findAll() {
-		return await ItemDBModel.find()
+		return await ItemSchema.find()
 	}
 
 	static async findById(_id: string) {
-		return await ItemDBModel.findById(_id)
+		return await ItemSchema.findById(_id)
 	}
 
 	static async update(_id: string, obj: Item) {
-		return await ItemDBModel.findByIdAndUpdate(_id, obj).then((data) => {
+		return await ItemSchema.findByIdAndUpdate(_id, obj).then((data) => {
 			return data?._id
 		})
 	}
 
 	static async delete(_id: string) {
-		return await ItemDBModel.findByIdAndDelete(_id).then((data) => {
+		return await ItemSchema.findByIdAndDelete(_id).then((data) => {
 			return data?._id
 		})
 	}

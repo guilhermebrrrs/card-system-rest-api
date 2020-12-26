@@ -1,17 +1,18 @@
 import mongoose, { Schema } from 'mongoose'
 
-const employeeSchema = new Schema(
-	{
-		tenant_id: { type: String, required: true },
-		restaurant_id: { type: String, required: true },
-		name: { type: String, required: true },
-		login: { type: String, required: true },
-		password: { type: String, required: true },
-	},
-	{ collection: 'Employees', timestamps: true }
+export const EmployeeSchema = mongoose.model(
+	'Employee',
+	new Schema(
+		{
+			tenant_id: { type: String, required: true },
+			restaurant_id: { type: String, required: true },
+			name: { type: String, required: true },
+			login: { type: String, required: true },
+			password: { type: String, required: true },
+		},
+		{ collection: 'Employees', timestamps: true }
+	)
 )
-
-export const EmployeeDBModel = mongoose.model('Employee', employeeSchema)
 
 export interface Employee {
 	_id?: string

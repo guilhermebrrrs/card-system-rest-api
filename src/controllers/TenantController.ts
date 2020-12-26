@@ -1,26 +1,26 @@
-import { Tenant, TenantDBModel } from '../models'
+import { Tenant, TenantSchema } from '../models'
 
 export class TenantController {
 	static async create(obj: Tenant) {
-		return await TenantDBModel.create(obj)
+		return await TenantSchema.create(obj)
 	}
 
 	static async findAll() {
-		return await TenantDBModel.find()
+		return await TenantSchema.find()
 	}
 
 	static async findById(_id: string) {
-		return await TenantDBModel.findById(_id)
+		return await TenantSchema.findById(_id)
 	}
 
 	static async update(_id: string, obj: Tenant) {
-		return await TenantDBModel.findByIdAndUpdate(_id, obj).then((data) => {
+		return await TenantSchema.findByIdAndUpdate(_id, obj).then((data) => {
 			return data?._id
 		})
 	}
 
 	static async delete(_id: string) {
-		return await TenantDBModel.findByIdAndDelete(_id).then((data) => {
+		return await TenantSchema.findByIdAndDelete(_id).then((data) => {
 			return data?._id
 		})
 	}

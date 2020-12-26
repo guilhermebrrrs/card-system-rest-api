@@ -6,6 +6,7 @@ const TableRouter = express.Router()
 
 TableRouter.post('/tables', async (req: Request, res: Response) => {
 	const obj: Table = req.body
+
 	await TableController.create(obj)
 		.then((data) => {
 			res.status(201).json('Created-OK')
@@ -29,6 +30,7 @@ TableRouter.get('/tables', async (req: Request, res: Response) => {
 
 TableRouter.get('/tables/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
+
 	await TableController.findById(_id)
 		.then((data) => {
 			res.status(200).json(data)
@@ -42,6 +44,7 @@ TableRouter.get('/tables/:_id', async (req: Request, res: Response) => {
 TableRouter.put('/tables/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
 	const obj: Table = req.body
+
 	await TableController.update(_id, obj)
 		.then((data) => {
 			res.status(200).json(data)
@@ -54,6 +57,7 @@ TableRouter.put('/tables/:_id', async (req: Request, res: Response) => {
 
 TableRouter.delete('/tables/:_id', async (req: Request, res: Response) => {
 	const _id: string = req.params._id
+
 	await TableController.delete(_id)
 		.then((data) => {
 			res.status(200).json(data)
