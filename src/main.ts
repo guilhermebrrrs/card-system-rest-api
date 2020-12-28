@@ -11,14 +11,21 @@ import {
 	TableRouter,
 	TenantRouter,
 } from './routes'
+import cors from 'cors'
 
 dotenv.config()
 
 const app = express()
+
 const PORT = process.env.PORT
 const database = process.env.MONGODB_DATABASENAME
 const userName = process.env.MONGODB_USER
 const userPassword = process.env.MONGODB_PASSWORD
+
+const corsConfig = cors({
+	origin: '*',
+	methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+})
 
 async function bootstrap() {
 	await mongoose
@@ -33,6 +40,7 @@ async function bootstrap() {
 		.catch((err) => console.error(err))
 
 	await app
+		.use(corsConfig)
 		.use(express.json())
 		.use('/api', [
 			CardRouter,
